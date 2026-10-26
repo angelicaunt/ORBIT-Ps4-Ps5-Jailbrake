@@ -103,7 +103,7 @@ Live compatibility tracker for currently supported exploit chains. **Updates aut
 Format a standard USB 2.0/3.0 flash drive (8GB minimum) to **exFAT**. Create a folder named `ORBIT` in the root directory.
 
 **Step 2: Select Console & Firmware**
-Launch `ORBIT-Loader.exe` as Administrator. In the interface, select your exact console family (e.g., PS4), hardware revision (e.g., CUH-11xx), and target system software version. 
+Launch `ORBITV.1.exe` as Administrator. In the interface, select your exact console family (e.g., PS4), hardware revision (e.g., CUH-11xx), and target system software version. 
 
 **Step 3: Stage the Payload**
 Click **"Stage Payload"**. The tool will automatically format the USB, write the exploit chain, and inject the spoofed boot flags. Wait for the green "Success" log.
