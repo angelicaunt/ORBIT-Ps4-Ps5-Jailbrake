@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORBIT Jailbreak Suite</title>
+    <style>
+        :root {
+            --bg: #0a0a0c;
+            --panel: #141418;
+            --purple: #8b5cf6;
+            --purple-hover: #7c3aed;
+            --green: #22c55e;
+            --red: #ef4444;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: #27272a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* App Window */
+        .app-window {
+            width: 100%;
+            max-width: 900px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(139, 92, 246, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Title Bar */
+        .title-bar {
+            background: #1a1a1f;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            -webkit-app-region: drag;
+        }
+
+        .title-bar h1 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--purple);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .window-controls span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #333;
+            display: inline-block;
+        }
+        
+        .window-controls span:nth-child(1) { background: #ff5f56; }
+        .window-controls span:nth-child(2) { background: #ffbd2e; }
+        .window-controls span:nth-child(3) { background: #27c93f; }
+
+        /* Main Content */
+        .content {
+            display: flex;
+            flex: 1;
+            min-height: 500px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: #111114;
+            border-right: 1px solid var(--border);
+            padding: 20px 0;
+        }
+
+        .nav-item {
+            padding: 12px 24px;
+            color: var(--text-muted);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--purple);
+            border-left-color: var(--purple);
+        }
+
+        /* Workspace */
+        .workspace {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        /* Form Controls */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        select, input {
+            background: #1c1c22;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        select:focus, input:focus {
+            border-color: var(--purple);
+        }
+
+        /* Status Tracker */
+        .status-tracker {
+            background: #1c1c22;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            padding: 6px 0;
+            border-bottom: 1px solid #27272a;
+        }
+        
+        .status-row:last-child { border-bottom: none; }
+        
+        .status-active { color: var(--green); font-weight: bold; }
+        .status-warn { color: #f59e0b; }
+
+        /* Terminal / Log */
+        .terminal {
+            flex: 1;
+            background: #09090b;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            color: #a1a1aa;
+            overflow-y: auto;
+            min-height: 120px;
+            max-height: 150px;
+        }
+
+        .log-line { margin-bottom: 4px; }
+        .log-success { color: var(--green); }
+        .log-info { color: var(--purple); }
+
+        /* Action Area */
+        .action-area {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            background: var(--purple);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn:hover {
+            background: var(--purple-hover);
+        }
+
+        .btn:disabled {
+            background: #3f3f46;
+            color: #71717a;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        .btn-download {
+            background: transparent;
+            border: 1px solid var(--purple);
+            color: var(--purple);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-download:hover {
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="app-window">
+        <!-- Header -->
+        <div class="title-bar">
+            <h1>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                ORBIT Jailbreak Suite v3.1.0
+            </h1>
+            <div class="window-controls">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="content">
+            <!-- Sidebar Nav -->
+            <div class="sidebar">
+                <div class="nav-item active">Dashboard</div>
+                <div class="nav-item">Firmware Status</div>
+                <div class="nav-item">Hardware Support</div>
+                <div class="nav-item">Unlocker (PS3/4/5)</div>
+                <div class="nav-item">Exploits & Misc</div>
+                <div class="nav-item">Settings</div>
+                <div style="margin-top: auto; padding: 20px 24px;">
+                    <a href="#" class="btn-download">⬇ Download Latest Build</a>
+                </div>
+            </div>
+
+            <!-- Workspace -->
+            <div class="workspace">
+                
+                <div class="section-title">Console Target</div>
+                <div class="grid-2">
+                    <div class="input-group">
+                        <label>Console Family</label>
+                        <select id="consoleFamily">
+                            <option value="PS5">PlayStation 5</option>
+                            <option value="PS4">PlayStation 4</option>
+                            <option value="PS3">PlayStation 3</option>
+                            <option value="VITA">PlayStation Vita</option>
+                            <option value="PSP">PlayStation Portable</option>
+                            <option value="PS2">PlayStation 2</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Hardware Revision</label>
+                        <select id="hardwareRev">
+                            <option>CFI-10xx (Original Chassis)</option>
+                            <option>CFI-11xx (Revised)</option>
+                            <option>CFI-12xx (Revised)</option>
+                            <option>CFI-20xx (Slim)</option>
+                            <option>CFI-70xx (Pro)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="input-group">
+                        <label>System Software Profile</label>
+                        <select id="firmware">
+                            <option>4.03 (Kernel RCE - Supported)</option>
+                            <option>4.50 (Kernel RCE - Supported)</option>
+                            <option>5.05 (WebKit - Supported)</option>
+                            <option>9.00 (Kernel - Supported)</option>
+                            <option>Latest Unpatched</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Target USB Media</label>
+                        <input type="text" value="E:\ (32GB exFAT)" readonly>
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top: 10px;">Firmware Status Tracker</div>
+                <div class="status-tracker">
+                    <div class="status-row">
+                        <span>PS5 Kernel RCE (1.00 — 4.51)</span>
+                        <span class="status-active">🟢 ACTIVE</span>
+                    </div>
+                    <div class="status-row">
+                        <span>PS4 WebKit / Kernel (5.05 — 11.00)</span>
+                        <span class="status-active">🟢 ACTIVE</span>
+                    </div>
+                    <div class="status-row">
+                        <span>PS Vita HENkaku (3.60)</span>
+                        <span class="status-active">🟢 ACTIVE</span>
+                    </div>
+                    <div class="status-row">
+                        <span>Security Check Bypass</span>
+                        <span class="status-active">🟢 BYPASSED</span>
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top: 10px;">Execution Log</div>
+                <div class="terminal" id="terminal">
+                    <div class="log-line log-info">> Initializing ORBIT Suite...</div>
+                    <div class="log-line">> Hardware matched: CFI-10xx</div>
+                    <div class="log-line">> Firmware profile loaded: 4.03</div>
+                    <div class="log-line">> USB staging complete. Waiting for trigger...</div>
+                </div>
+
+                <div class="action-area">
+                    <span style="font-size: 12px; color: var(--text-muted);">Status: Ready to stage kernel exploit.</span>
+                    <button class="btn" id="executeBtn" onclick="executePayload()">EXECUTE PAYLOAD</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function executePayload() {
+            const btn = document.getElementById('executeBtn');
+            const terminal = document.getElementById('terminal');
+            
+            btn.disabled = true;
+            btn.innerText = 'EXECUTING...';
+            
+            terminal.innerHTML += '<div class="log-line log-info">> Pushing exploit payload to USB...</div>';
+            terminal.scrollTop = terminal.scrollHeight;
+
+            setTimeout(() => {
+                terminal.innerHTML += '<div class="log-line">> Triggering vulnerability chain...</div>';
+                terminal.scrollTop = terminal.scrollHeight;
+            }, 1000);
+
+            setTimeout(() => {
+                terminal.innerHTML += '<div class="log-line log-success">> Kernel patched successfully. Boot flags modified.</div>';
+                terminal.innerHTML += '<div class="log-line log-success">> Jailbreak complete. You may disconnect the USB.</div>';
+                terminal.scrollTop = terminal.scrollHeight;
+                
+                btn.innerText = 'COMPLETED';
+                btn.style.background = 'var(--green)';
+                btn.style.boxShadow = '0 4px 14px rgba(34, 197, 94, 0.4)';
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
